@@ -1,0 +1,65 @@
+﻿<Window x:Class="MediaPlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MediaPlayer"
+        mc:Ignorable="d"
+        Title="Media player" Height="520" Width="1148" Icon="media_player_22350.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="gridName" Margin="0,0,4,0">
+        <Border Name="borderMediaElement" Margin="10,10,188,86" BorderBrush="Black" BorderThickness="1" Background="Gray">
+            <MediaElement x:Name="mediaElement" LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="Fill" Margin="0,0,-1,-1" MouseLeftButtonDown="fullScreen" MediaOpened="mediaLoaded" MediaEnded="startNext" />
+        </Border>
+
+        <Grid x:Name="bottomMenu" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="217*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <Slider x:Name="durationSlider" Margin="-121,405,10,0" ValueChanged="durationSlider_ValueChanged" Maximum="13" VerticalAlignment="Top" MinWidth="757" Cursor="Hand"/>
+            <Slider x:Name="volumeSlider" Margin="0,0,16,5" VerticalAlignment="Bottom" Width="100" Maximum="1" Value="1" Height="18" ValueChanged="volumeSlider_ValueChanged" HorizontalAlignment="Right" Cursor="Hand" Grid.Row="1"/>
+            <Button x:Name="playButton" Margin="298,0,461,5" Width="35" Height="30" VerticalAlignment="Bottom" Click="playButton_Click" Style="{StaticResource ButtonPlayerControl}" HorizontalAlignment="Center" Grid.RowSpan="2">
+                <Image Source="pack://siteoforigin:,,,/Resources/play-button.png" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+            </Button>
+            <Button x:Name="stopButton" Margin="258,0,501,5" VerticalAlignment="Bottom" Width="35" Height="26" Click="Button_Click_1" Style="{StaticResource ButtonPlayerControl}" HorizontalAlignment="Center" Grid.RowSpan="2">
+                <Image Source="pack://siteoforigin:,,,/Resources/stop.png" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+            </Button>
+            <Button x:Name="pauseButton" Margin="338,0,421,5" VerticalAlignment="Bottom" Width="35" Height="26" Click="Button_Click_2" Style="{StaticResource ButtonPlayerControl}" HorizontalAlignment="Center" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Grid.RowSpan="2" >
+                <Image Source="pause.png" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="-117,434,0,0" VerticalAlignment="Top" Width="40" Height="30" Click="Button_Click" Style="{StaticResource ButtonPlayerControl}" Grid.RowSpan="2">
+                <Image Source="pack://siteoforigin:,,,/Resources/video.png" Margin="5,1,5,-1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Button>
+            <Label x:Name="info" Content="Label" Margin="-112,415,139,0" VerticalAlignment="Top" Foreground="Black" Grid.RowSpan="2"/>
+            <Button x:Name="backButton" Margin="218,0,541,5" VerticalAlignment="Bottom" Width="35" Height="26"  Style="{StaticResource ButtonPlayerControl}" Click="Button_Click_3" HorizontalAlignment="Center" Grid.RowSpan="2" >
+                <Image Source="fast-back.png" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+            </Button>
+            <Button x:Name="forwardButton" Margin="378,0,380,5" VerticalAlignment="Bottom" Width="36" Height="26"  Style="{StaticResource ButtonPlayerControl}" Click="Button_Click_4" HorizontalAlignment="Center" Grid.RowSpan="2" >
+                <Image Source="fast-forward.png" HorizontalAlignment="Center"></Image>
+            </Button>
+            <Button x:Name="muteButton" HorizontalAlignment="Left" Margin="627,434,0,0" VerticalAlignment="Top" Width="36" Height="26" Style="{StaticResource ButtonPlayerControl}" Click="Button_Click_5" Grid.RowSpan="2">
+                <Image Name="imageVolume" Source="speaker-filled-audio-tool.png"></Image>
+            </Button>
+        </Grid>
+        <ListView x:Name="showPlaylist" HorizontalAlignment="Right" Height="389" Margin="0,10,0,0" VerticalAlignment="Top" Width="173" MouseDoubleClick="listDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="File name" HeaderStringFormat="File name" Width="168"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="playlistButton" Margin="0,410,4,0" Click="Button_Click_6" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="playlist.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock Margin="5,0,0,0"><Run Text="Playlist"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="shuffleButton" Margin="956,410,104,0" VerticalAlignment="Top" Click="Button_Click_7" Height="22" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="shuffle.png" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock Margin="5,0,0,0"><Run Text="Shuffle"/></TextBlock>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</Window>
